@@ -1,15 +1,13 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { Category } from '@modules/Cars/entities/Category';
-import {
-  ICategoriesRepository,
-  ICreateCategoryDTO,
-} from '@modules/Cars/interfaces/ICategoriesRepository';
+import { Category } from '@modules/Cars/infra/entities/Category';
+import { ICreateCategory } from '@modules/Cars/types/ICreateCategory';
+import { ICategoriesRepository } from '../ICategoriesRepository';
 
 class CategoryRepositoryInMemory implements ICategoriesRepository {
   private categories: Category[] = [];
 
-  async create(data: ICreateCategoryDTO): Promise<void> {
+  async create(data: ICreateCategory): Promise<void> {
     const category = new Category();
     Object.assign(category, { id: uuidV4(), ...data, at_created: new Date() });
 

@@ -8,7 +8,7 @@
     "paths": {
       "@config/*": ["config/*"],
       "@modules/*": ["modules/*"],
-      "@errors/*": ["errors/*"],
+      "@shared/*": ["shared/*"],
       "@utils/*": ["utils/*"]
     },
 

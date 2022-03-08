@@ -2,11 +2,11 @@ import 'reflect-metadata';
 import express from 'express';
 import swagger from 'swagger-ui-express';
 
-import './database';
-import './shared/container';
+import '../typeorm';
+import '@shared/container';
 import 'express-async-errors';
 
-import swaggerConfig from './swagger.config.json';
+import swaggerConfig from '@config/swagger.json';
 import { routes } from './routes';
 import { HandleError } from './middlewares/HandleError';
 

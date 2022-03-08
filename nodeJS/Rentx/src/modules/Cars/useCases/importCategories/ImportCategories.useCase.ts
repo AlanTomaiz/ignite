@@ -2,12 +2,10 @@ import { inject, injectable } from 'tsyringe';
 import { parse as csvParse } from 'csv-parse';
 import fs from 'fs';
 
-import {
-  ICategoriesRepository,
-  ICreateCategoryDTO,
-} from '@modules/Cars/interfaces/ICategoriesRepository';
+import { ICreateCategory } from '@modules/Cars/types/ICreateCategory';
+import { ICategoriesRepository } from '@modules/Cars/repositories/ICategoriesRepository';
 
-type IImportCategory = ICreateCategoryDTO;
+type IImportCategory = ICreateCategory;
 
 @injectable()
 class ImportCategoriesUseCase {

@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import { hash } from 'bcrypt';
 
 import { ICreateUser } from '@modules/accounts/types/ICreateUser';
-import { IUsersRepository } from '@modules/accounts/interfaces/IUsersRepository';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
 @injectable()
 class CreateUserUseCase {

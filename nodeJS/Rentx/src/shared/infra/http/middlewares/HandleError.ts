@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { AppError } from '../errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 function HandleError(err: Error, req: Request, res: Response, _: NextFunction) {
   if (err instanceof AppError) {

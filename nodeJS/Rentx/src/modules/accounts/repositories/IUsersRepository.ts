@@ -1,4 +1,4 @@
-import { User } from '../entities/User';
+import { User } from '../infra/entities/User';
 import { ICreateUser } from '../types/ICreateUser';
 
 interface IUsersRepository {

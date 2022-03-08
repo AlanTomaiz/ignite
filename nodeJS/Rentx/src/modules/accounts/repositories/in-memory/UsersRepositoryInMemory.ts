@@ -1,8 +1,8 @@
 import { v4 as uuidV4 } from 'uuid';
 
-import { User } from '@modules/accounts/entities/User';
+import { User } from '@modules/accounts/infra/entities/User';
 import { ICreateUser } from '@modules/accounts/types/ICreateUser';
-import { IUsersRepository } from '@modules/accounts/interfaces/IUsersRepository';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
 class UsersRepositoryInMemory implements IUsersRepository {
   private users: User[] = [];
