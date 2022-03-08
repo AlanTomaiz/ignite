@@ -2,9 +2,9 @@ import { inject, injectable } from 'tsyringe';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
-import authConfig from '../../../../config/auth';
-import { AppError } from '../../../../errors/AppError';
-import { IUsersRepository } from '../../interfaces/IUsersRepository';
+import authConfig from '@config/auth';
+import { AppError } from '@errors/AppError';
+import { IUsersRepository } from '@modules/accounts/interfaces/IUsersRepository';
 
 interface IRequest {
   email: string;

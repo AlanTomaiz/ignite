@@ -5,7 +5,7 @@ import fs from 'fs';
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
-} from '../../interfaces/ICategoriesRepository';
+} from '@modules/Cars/interfaces/ICategoriesRepository';
 
 type IImportCategory = ICreateCategoryDTO;
 

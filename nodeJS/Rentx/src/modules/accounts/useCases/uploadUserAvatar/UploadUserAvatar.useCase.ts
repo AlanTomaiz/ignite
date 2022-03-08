@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { deleteFile } from '../../../../utils/handleFiles';
-import { IUsersRepository } from '../../interfaces/IUsersRepository';
+import { deleteFile } from '@utils/handleFiles';
+import { IUsersRepository } from '@modules/accounts/interfaces/IUsersRepository';
 
 @injectable()
 class UploadUserAvatarUseCase {

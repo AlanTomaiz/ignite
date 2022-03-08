@@ -3,11 +3,17 @@
     "target": "es2016",
     "module": "commonjs",
 
-    // "outDir": "./dist",
-    // "rootDir": "./",
-    // "baseUrl": "./src",
+    "rootDir": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@modules/*": ["modules/*"],
+      "@errors/*": ["errors/*"],
+      "@utils/*": ["utils/*"]
+    },
 
     "esModuleInterop": true,
+
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
