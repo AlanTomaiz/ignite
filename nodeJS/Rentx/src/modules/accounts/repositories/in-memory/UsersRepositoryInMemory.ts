@@ -21,7 +21,7 @@ class UsersRepositoryInMemory implements IUsersRepository {
       email,
       password,
       driver_license,
-      at_created: new Date(),
+      created_at: new Date(),
     });
 
     this.users.push(user);

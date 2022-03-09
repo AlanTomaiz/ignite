@@ -9,7 +9,7 @@ class CategoryRepositoryInMemory implements ICategoriesRepository {
 
   async create(data: ICreateCategory): Promise<void> {
     const category = new Category();
-    Object.assign(category, { id: uuidV4(), ...data, at_created: new Date() });
+    Object.assign(category, { id: uuidV4(), ...data, created_at: new Date() });
 
     this.categories.push(category);
   }
