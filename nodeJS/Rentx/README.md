@@ -6,17 +6,17 @@
 [x] Não deve ser possível cadastar um carro com uma placa já existente;
 [ ] Não deve ser possível alterar a placa de um carro já cadastrado;
 [x] O carro cadastrado, por padrão, deve estar disponível para locação;
-[ ] O cadastro deve ser efetuado somente por usuários administrado;
+[x] O cadastro deve ser efetuado somente por usuários administrado;
 
 ## Listagem de carros
 **Requisitos Funcionais**
-[ ] Deve ser possível listar todos os carros disponíveis;
-[ ] Deve ser possível filtrar por categoria;
-[ ] Deve ter possível filtrar por marca;
-[ ] Deve ser possível filtrar por nome;
+[x] Deve ser possível listar todos os carros disponíveis;
+[x] Deve ser possível filtrar por categoria;
+[x] Deve ter possível filtrar por marca;
+[x] Deve ser possível filtrar por nome;
 
 **Regras de Negócio**
-[ ] O usuário não precisa estar logado no sistema;
+[x] O usuário não precisa estar logado no sistema;
 
 ## Cadastro de Especificação no carro
 **Requisitos Funcionais**

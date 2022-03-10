@@ -2,6 +2,7 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { Car } from '@modules/Cars/infra/entities/Car';
 import { ICreateCar } from '@modules/Cars/types/ICreateCar';
+import { IFindAvailabeCars } from '@modules/Cars/types/IFindAvailabeCars';
 import { ICarsRepository } from '../ICarsRepository';
 
 class CarsRepositoryInMemory implements ICarsRepository {
@@ -37,6 +38,21 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
   async findByLicensePlate(license_plate: string): Promise<Car> {
     return this.cars.find(car => car.license_plate === license_plate);
+  }
+
+  async findAll({
+    name,
+    brand,
+    category_id,
+  }: IFindAvailabeCars): Promise<Car[]> {
+    return this.cars.filter(
+      car =>
+        car.available &&
+        ((name && car.name === name) ||
+          (brand && car.brand === brand) ||
+          (category_id && car.category_id === category_id) ||
+          (!category_id && !brand && !name)),
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 export default {
   jwt: {
     secret: 'umasenhalegal',
-    expiresIn: '1d',
+    expiresIn: '365d',
   },
 };
