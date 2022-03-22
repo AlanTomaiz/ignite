@@ -2,13 +2,13 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { Car } from '@modules/Cars/infra/entities/Car';
 import { ICreateCar } from '@modules/Cars/types/ICreateCar';
-import { IFindAvailabeCars } from '@modules/Cars/types/IFindAvailabeCars';
+import { IFindAvailableCars } from '@modules/Cars/types/IFindAvailableCars';
 import { ICarsRepository } from '../ICarsRepository';
 
 class CarsRepositoryInMemory implements ICarsRepository {
   private cars: Car[] = [];
 
-  async create(data: ICreateCar): Promise<void> {
+  async create(data: ICreateCar): Promise<Car> {
     const {
       name,
       category_id,
@@ -17,6 +17,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
       license_plate,
       fine_amount,
       brand,
+      specifications,
     } = data;
 
     const car = new Car();
@@ -29,22 +30,28 @@ class CarsRepositoryInMemory implements ICarsRepository {
       license_plate,
       fine_amount,
       brand,
+      specifications,
       available: true,
       created_at: new Date(),
     });
 
     this.cars.push(car);
+    return car;
+  }
+
+  async findById(id: string): Promise<Car> {
+    return this.cars.find(car => car.id === id);
   }
 
   async findByLicensePlate(license_plate: string): Promise<Car> {
     return this.cars.find(car => car.license_plate === license_plate);
   }
 
-  async findAll({
+  async findAvailables({
     name,
     brand,
     category_id,
-  }: IFindAvailabeCars): Promise<Car[]> {
+  }: IFindAvailableCars): Promise<Car[]> {
     return this.cars.filter(
       car =>
         car.available &&

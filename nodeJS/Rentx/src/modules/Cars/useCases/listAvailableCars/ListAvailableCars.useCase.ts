@@ -16,7 +16,7 @@ class ListAvailableCarsUseCase {
     brand,
     category_id,
   }: IFindAvailableCars): Promise<Car[]> {
-    return this.repository.findAll({ name, brand, category_id });
+    return this.repository.findAvailables({ name, brand, category_id });
   }
 }
 

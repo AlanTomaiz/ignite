@@ -7,14 +7,15 @@ import { ICategoriesRepository } from '../ICategoriesRepository';
 class CategoryRepositoryInMemory implements ICategoriesRepository {
   private categories: Category[] = [];
 
-  async create(data: ICreateCategory): Promise<void> {
+  async create(data: ICreateCategory): Promise<Category> {
     const category = new Category();
     Object.assign(category, { id: uuidV4(), ...data, created_at: new Date() });
 
     this.categories.push(category);
+    return category;
   }
 
-  async list(): Promise<Category[]> {
+  async listAll(): Promise<Category[]> {
     return this.categories;
   }
 

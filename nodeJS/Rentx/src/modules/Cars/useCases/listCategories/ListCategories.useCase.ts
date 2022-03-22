@@ -10,7 +10,7 @@ class ListCategoriesUseCase {
   ) {}
 
   async execute() {
-    return this.repository.list();
+    return this.repository.listAll();
   }
 }
 

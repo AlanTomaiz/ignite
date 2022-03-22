@@ -1,10 +1,10 @@
-import { Category } from '../entities/Category';
+import { Category } from '../infra/entities/Category';
 import { ICreateCategory } from '../types/ICreateCategory';
 
 interface ICategoriesRepository {
-  create(data: ICreateCategory): Promise<void>;
+  create(data: ICreateCategory): Promise<Category>;
 
-  list(): Promise<Category[]>;
+  listAll(): Promise<Category[]>;
 
   findByName(title: string): Promise<Category>;
 }
