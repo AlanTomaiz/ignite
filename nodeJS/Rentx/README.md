@@ -18,21 +18,20 @@
 **Regras de Negócio**
 [x] O usuário não precisa estar logado no sistema;
 
-## Cadastro de Especificação no carro
+## Registrar Especificação no carro
 **Requisitos Funcionais**
-[ ] Deve ser possível cadastrar uma especificação para um carro;
+[x] Deve ser possível cadastrar uma especificação para um carro;
 
 **Regras de Negócio**
-[ ] Não deve ser possível cadastro em carros não cadastrados;
-[ ] Não deve ser possível cadastro de especificações já existentes;
-[ ] O cadastro deve ser efetuado somente por usuários administrado;
+[x] Não deve ser possível cadastro em carros não cadastrados;
+[x] O cadastro deve ser efetuado somente por usuários administrado;
 
 ## Cadastro de imagens do carro
 **Requisitos Funcionais**
-[ ] Deve ser possível cadastrar imagens do carro;
+[x] Deve ser possível cadastrar imagens do carro;
 
 **Regras de Negócio**
-[ ] O cadastro deve ser efetuado somente por usuários administrado;
+[x] O cadastro deve ser efetuado somente por usuários administrado;
 
 ## Aluguel de carro
 **Requisitos Funcionais**
