@@ -1,3 +1,3 @@
-import { CreateSpecificationController } from './CreateSpecification.controller';
+import { CreateSpecificationController } from './CreateSpecificationController';
 
 export default new CreateSpecificationController();

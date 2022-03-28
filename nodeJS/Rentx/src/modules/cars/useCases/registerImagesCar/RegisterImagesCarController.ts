@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { RegisterImagesCarUseCase } from './RegisterImagesCar.useCase';
+import { RegisterImagesCarUseCase } from './RegisterImagesCarUseCase';
 
 interface IFiles {
   filename: string;

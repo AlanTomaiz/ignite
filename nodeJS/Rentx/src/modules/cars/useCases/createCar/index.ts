@@ -1,3 +1,3 @@
-import { CreateCarController } from './CreateCar.controller';
+import { CreateCarController } from './CreateCarController';
 
 export default new CreateCarController();

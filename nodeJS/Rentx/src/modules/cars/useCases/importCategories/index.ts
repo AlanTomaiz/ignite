@@ -1,3 +1,3 @@
-import { ImportCategoriesController } from './ImportCategories.controller';
+import { ImportCategoriesController } from './ImportCategoriesController';
 
 export default new ImportCategoriesController();

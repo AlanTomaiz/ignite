@@ -1,3 +1,3 @@
-import { AuthenticateUserController } from './AuthenticateUser.controller';
+import { AuthenticateUserController } from './AuthenticateUserController';
 
 export default new AuthenticateUserController();

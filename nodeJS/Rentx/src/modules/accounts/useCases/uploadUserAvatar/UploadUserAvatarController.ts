@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { UploadUserAvatarUseCase } from './UploadUserAvatar.useCase';
+import { UploadUserAvatarUseCase } from './UploadUserAvatarUseCase';
 
 class UploadUserAvatarController {
   async handle(request: Request, response: Response): Promise<Response> {

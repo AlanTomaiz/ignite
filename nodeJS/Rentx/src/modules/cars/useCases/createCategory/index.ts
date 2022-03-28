@@ -1,3 +1,3 @@
-import { CreateCategoryController } from './CreateCategory.controller';
+import { CreateCategoryController } from './CreateCategoryController';
 
 export default new CreateCategoryController();

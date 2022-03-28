@@ -1,7 +1,7 @@
 import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
 import { SpecificationsRepositoryInMemory } from '@modules/cars/repositories/in-memory/SpecificationsRepositoryInMemory';
 import { AppError } from '@shared/errors/AppError';
-import { RegisterSpecificationsCarUseCase } from './RegisterSpecificationsCar.useCase';
+import { RegisterSpecificationsCarUseCase } from './RegisterSpecificationsCarUseCase';
 
 describe('# Register specifications to an the car', () => {
   const carsRepository = new CarsRepositoryInMemory();

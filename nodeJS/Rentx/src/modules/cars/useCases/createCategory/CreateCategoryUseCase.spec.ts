@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError';
 import { CategoryRepositoryInMemory } from '@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory';
-import { CreateCategoryUseCase } from './CreateCategory.useCase';
+import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
 describe('# Create categories', () => {
   const repository = new CategoryRepositoryInMemory();

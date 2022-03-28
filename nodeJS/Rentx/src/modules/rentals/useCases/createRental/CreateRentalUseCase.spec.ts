@@ -3,7 +3,7 @@ import { addHours, format } from 'date-fns';
 import { AppError } from '@shared/errors/AppError';
 import { RentalsRepositoryInMemory } from '@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory';
 import { DateProvider } from '@shared/container/providers/DateProvider/implementations';
-import { CreateRentalUseCase } from './CreateRental.useCase';
+import { CreateRentalUseCase } from './CreateRentalUseCase';
 
 jest.mock('@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory');
 

@@ -1,3 +1,3 @@
-import { RegisterImagesCarControlle } from './RegisterImagesCar.controller';
+import { RegisterImagesCarControlle } from './RegisterImagesCarController';
 
 export default new RegisterImagesCarControlle();

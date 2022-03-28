@@ -1,8 +1,8 @@
 import { AppError } from '@shared/errors/AppError';
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory';
 import { ICreateUser } from '@modules/accounts/types/ICreateUser';
-import { CreateUserUseCase } from '../createUser/CreateUser.useCase';
-import { AuthenticateUserUseCase } from './AuthenticateUser.useCase';
+import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
+import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
 describe('# Authenticate User', () => {
   const repository = new UsersRepositoryInMemory();

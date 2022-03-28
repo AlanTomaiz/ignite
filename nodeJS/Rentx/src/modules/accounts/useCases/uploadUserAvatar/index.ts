@@ -1,3 +1,3 @@
-import { UploadUserAvatarController } from './UploadUserAvatar.controller';
+import { UploadUserAvatarController } from './UploadUserAvatarController';
 
 export default new UploadUserAvatarController();

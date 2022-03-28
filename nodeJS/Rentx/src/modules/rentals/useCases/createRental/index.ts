@@ -1,3 +1,3 @@
-import { CreateRentalController } from './CreateRental.controller';
+import { CreateRentalController } from './CreateRentalController';
 
 export default new CreateRentalController();

@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError';
 import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
-import { CreateCarUseCase } from './CreateCar.useCase';
+import { CreateCarUseCase } from './CreateCarUseCase';
 
 describe('# Create cars', () => {
   const repository = new CarsRepositoryInMemory();

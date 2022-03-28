@@ -1,3 +1,3 @@
-import { RegisterSpecificationsCarController } from './RegisterSpecificationsCar.controller';
+import { RegisterSpecificationsCarController } from './RegisterSpecificationsCarController';
 
 export default new RegisterSpecificationsCarController();

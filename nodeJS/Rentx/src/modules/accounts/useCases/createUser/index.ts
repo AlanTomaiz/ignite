@@ -1,3 +1,3 @@
-import { CreateUserController } from './CreateUser.controller';
+import { CreateUserController } from './CreateUserController';
 
 export default new CreateUserController();

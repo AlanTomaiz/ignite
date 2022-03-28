@@ -1,3 +1,3 @@
-import { ListSpecificationsController } from './ListSpecifications.controller';
+import { ListSpecificationsController } from './ListSpecificationsController';
 
 export default new ListSpecificationsController();

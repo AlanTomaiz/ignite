@@ -1,3 +1,3 @@
-import { ListAvailableCarsController } from './ListAvailable.controller';
+import { ListAvailableCarsController } from './ListAvailableController';
 
 export default new ListAvailableCarsController();
