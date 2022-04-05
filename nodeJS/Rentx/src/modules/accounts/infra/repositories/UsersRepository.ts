@@ -12,7 +12,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async save(data: ICreateUser): Promise<void> {
-    await this.repository.save(data);
+    await this.repository.save({ ...data });
   }
 
   async create(data: ICreateUser): Promise<void> {

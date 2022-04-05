@@ -10,7 +10,7 @@ interface IRequest {
   expected_return_date: string;
 }
 
-const minimumLeaseTerm = 24; // 24Hours
+const rentalMinimumTime = 1; // 1 day
 
 @injectable()
 class CreateRentalUseCase {
@@ -37,17 +37,17 @@ class CreateRentalUseCase {
       throw new AppError('This user has rental open in moment.');
     }
 
-    const dateNow = new Date().setSeconds(0);
+    const dateNow = new Date().setHours(0, 0, 0, 0);
     const expectedReturnDateFormat =
       this.dateProvider.parseIso(expected_return_date);
 
-    const compareRentalDate = this.dateProvider.compareInHours(
+    const compareRentalDate = this.dateProvider.compareInDays(
       expectedReturnDateFormat,
       dateNow,
     );
 
-    if (compareRentalDate < minimumLeaseTerm) {
-      throw new AppError('Invalid return time to the rental.');
+    if (compareRentalDate < rentalMinimumTime) {
+      throw new AppError('Minimun return is one day.');
     }
 
     const rental = await this.repository.create({

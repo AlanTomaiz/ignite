@@ -1,4 +1,4 @@
-import { addHours, format } from 'date-fns';
+import { format } from 'date-fns';
 
 import { AppError } from '@shared/errors/AppError';
 import { RentalsRepositoryInMemory } from '@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory';
@@ -38,7 +38,7 @@ describe('# Create rentals', () => {
     expect(repository.create).not.toHaveBeenCalled();
   });
 
-  it('Should be not able create a new rental with not minimum 24 hours', async () => {
+  it('Should be not able create a new rental for the finalize to same day', async () => {
     expect(async () => {
       await useCase.execute({ ...rentalDTO });
     }).rejects.toBeInstanceOf(AppError);
@@ -47,15 +47,9 @@ describe('# Create rentals', () => {
   });
 
   it('Should be able create a new rental', async () => {
-    const dateFrom24Hours = addHours(new Date(), 24);
+    dateProvider.compareInDays = jest.fn().mockResolvedValueOnce(1);
 
-    const createRental = { ...rentalDTO };
-    createRental.expected_return_date = format(
-      dateFrom24Hours,
-      "y'-'MM'-'dd' 'HH:mm:ss",
-    );
-
-    await useCase.execute({ ...createRental });
+    await useCase.execute({ ...rentalDTO });
     expect(repository.create).toHaveBeenCalled();
   });
 });

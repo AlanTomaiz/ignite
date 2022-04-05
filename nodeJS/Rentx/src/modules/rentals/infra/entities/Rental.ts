@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { Car } from '../../../cars/infra/entities/Car';
 
 @Entity('rentals')
 class Rental {
@@ -7,6 +15,10 @@ class Rental {
 
   @Column()
   car_id: string;
+
+  @ManyToOne(() => Car, { cascade: true })
+  @JoinColumn({ name: 'car_id' })
+  car: Car;
 
   @Column()
   user_id: string;

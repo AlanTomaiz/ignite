@@ -5,7 +5,7 @@ import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
 class AuthenticateUserController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { email, pass } = request.body;
+    const { email, password: pass } = request.body;
 
     const useCase = container.resolve(AuthenticateUserUseCase);
     const { token, user } = await useCase.execute({ email, pass });

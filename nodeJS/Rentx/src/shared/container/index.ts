@@ -20,6 +20,9 @@ import { CarImageRepository } from '@modules/cars/infra/repositories/CarImageRep
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 import { RentalsRepository } from '@modules/rentals/infra/repositories/RentalsRepository';
 
+import { ITokensRepository } from '@modules/accounts/repositories/ITokensRepository';
+import { TokensRepository } from '@modules/accounts/infra/repositories/TokensRepository';
+
 // ICategoriesRepository
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
@@ -51,4 +54,10 @@ container.registerSingleton<ICarImageRepository>(
 container.registerSingleton<IRentalsRepository>(
   'RentalsRepository',
   RentalsRepository,
+);
+
+// ITokensRepository
+container.registerSingleton<ITokensRepository>(
+  'TokensRepository',
+  TokensRepository,
 );
