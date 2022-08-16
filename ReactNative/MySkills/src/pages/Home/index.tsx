@@ -1,15 +1,24 @@
 import React, {useState} from 'react';
 import {StatusBar, StyleSheet, Text, View, TextInput} from 'react-native';
+import {Button} from '../../components/Button';
+import {SkillsBox} from '../../components/SkillsBox';
 
-import {Button} from './src/components/Button';
-import {SkillsBox} from './src/components/SkillsBox';
+interface SkillProps {
+  id: string;
+  title: string;
+}
 
-export const App = () => {
+export const Home = () => {
   const [NewSkill, setNewSkill] = useState('');
-  const [mySkills, setMySkills] = useState([]);
+  const [mySkills, setMySkills] = useState<SkillProps[]>([]);
 
   function handleAddNewSkill() {
-    setMySkills(state => [...state, NewSkill]);
+    const data = {
+      id: String(new Date().getTime()),
+      title: NewSkill,
+    };
+
+    setMySkills(state => [...state, data]);
   }
 
   return (
@@ -29,8 +38,8 @@ export const App = () => {
 
       <Text style={[style.title, {marginTop: 24}]}>Minhas Skills</Text>
 
-      {mySkills.map((skill, index) => (
-        <SkillsBox title={skill} key={`${skill}${index}`} />
+      {mySkills.map(skill => (
+        <SkillsBox title={skill.title} key={skill.id} />
       ))}
     </View>
   );
