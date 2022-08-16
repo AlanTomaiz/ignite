@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {StatusBar, StyleSheet, Text, View, TextInput} from 'react-native';
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  FlatList,
+} from 'react-native';
 import {Button} from '../../components/Button';
 import {SkillsBox} from '../../components/SkillsBox';
 
@@ -38,9 +45,11 @@ export const Home = () => {
 
       <Text style={[style.title, {marginTop: 24}]}>Minhas Skills</Text>
 
-      {mySkills.map(skill => (
-        <SkillsBox title={skill.title} key={skill.id} />
-      ))}
+      <FlatList
+        data={mySkills}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => <SkillsBox title={item.title} />}
+      />
     </View>
   );
 };
