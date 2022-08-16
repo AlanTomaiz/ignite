@@ -1,14 +1,8 @@
 import React, {useState} from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {StatusBar, StyleSheet, Text, View, TextInput} from 'react-native';
 
 import {Button} from './src/components/Button';
+import {SkillsBox} from './src/components/SkillsBox';
 
 export const App = () => {
   const [NewSkill, setNewSkill] = useState('');
@@ -36,9 +30,7 @@ export const App = () => {
       <Text style={[style.title, {marginTop: 24}]}>Minhas Skills</Text>
 
       {mySkills.map((skill, index) => (
-        <TouchableOpacity style={style.skillBox} key={`${skill}${index}`}>
-          <Text style={style.skillTitle}>{skill}</Text>
-        </TouchableOpacity>
+        <SkillsBox title={skill} key={`${skill}${index}`} />
       ))}
     </View>
   );
@@ -62,17 +54,5 @@ const style = StyleSheet.create({
     marginTop: 24,
     borderRadius: 4,
     backgroundColor: '#1F1E25',
-  },
-  skillBox: {
-    alignItems: 'center',
-    borderRadius: 30,
-    backgroundColor: '#1F1E25',
-    paddingVertical: 12,
-    marginTop: 8,
-  },
-  skillTitle: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
 });
