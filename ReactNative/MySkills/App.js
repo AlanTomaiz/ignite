@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StatusBar,
   StyleSheet,
@@ -7,6 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+
+import {Button} from './src/components/Button';
 
 export const App = () => {
   const [NewSkill, setNewSkill] = useState('');
@@ -20,9 +22,7 @@ export const App = () => {
     <View style={style.container}>
       <StatusBar barStyle={'light-content'} />
 
-      <Text style={style.title}>
-        Bem Vindo
-      </Text>
+      <Text style={style.title}>Bem Vindo</Text>
 
       <TextInput
         style={style.input}
@@ -31,15 +31,9 @@ export const App = () => {
         onChangeText={setNewSkill}
       />
 
-      <TouchableOpacity style={style.button} onPress={handleAddNewSkill}>
-        <Text style={style.buttonText}>
-          Adicionar nova Skill
-        </Text>
-      </TouchableOpacity>
+      <Button onPress={handleAddNewSkill} title="Adicionar nova Skill" />
 
-      <Text style={[style.title, { marginTop: 24 }]}>
-        Minhas Skills
-      </Text>
+      <Text style={[style.title, {marginTop: 24}]}>Minhas Skills</Text>
 
       {mySkills.map((skill, index) => (
         <TouchableOpacity style={style.skillBox} key={`${skill}${index}`}>
@@ -54,12 +48,12 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: '#121015'
+    backgroundColor: '#121015',
   },
   title: {
     color: '#FFF',
     fontSize: 18,
-    fontWeigth: 'bold'
+    fontWeigth: 'bold',
   },
   input: {
     color: '#FFF',
@@ -68,17 +62,6 @@ const style = StyleSheet.create({
     marginTop: 24,
     borderRadius: 4,
     backgroundColor: '#1F1E25',
-  },
-  button: {
-    padding: 16,
-    alignItems: 'center',
-    borderRadius: 10,
-    marginTop: 24,
-    backgroundColor: '#A370F7',
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#FFF',
   },
   skillBox: {
     alignItems: 'center',
