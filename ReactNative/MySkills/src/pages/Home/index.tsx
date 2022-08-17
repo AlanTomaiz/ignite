@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StatusBar,
   StyleSheet,
@@ -7,6 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
+
 import {Button} from '../../components/Button';
 import {SkillsBox} from '../../components/SkillsBox';
 
@@ -17,6 +18,7 @@ interface SkillProps {
 
 export const Home = () => {
   const [NewSkill, setNewSkill] = useState('');
+  const [gretting, setGretting] = useState('');
   const [mySkills, setMySkills] = useState<SkillProps[]>([]);
 
   function handleAddNewSkill() {
@@ -32,11 +34,26 @@ export const Home = () => {
     setMySkills(state => state.filter(skill => skill.id !== skill_id));
   }
 
+  useEffect(() => {
+    const today = new Date().getHours();
+
+    setGretting(
+      today < 12
+        ? 'Bom dia'
+        : today >= 12 && today <= 18
+        ? 'Boa Tarde'
+        : 'Boa Noite',
+    );
+  }, []);
+
   return (
     <View style={style.container}>
       <StatusBar barStyle={'light-content'} />
 
       <Text style={style.title}>Bem Vindo</Text>
+      <Text style={[style.title, {fontSize: 12, color: '#999'}]}>
+        {gretting}
+      </Text>
 
       <TextInput
         style={style.input}
