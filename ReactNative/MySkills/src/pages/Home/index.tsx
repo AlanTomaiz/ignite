@@ -28,6 +28,10 @@ export const Home = () => {
     setMySkills(state => [...state, data]);
   }
 
+  function handleRemoveSkill(skill_id: string) {
+    setMySkills(state => state.filter(skill => skill.id !== skill_id));
+  }
+
   return (
     <View style={style.container}>
       <StatusBar barStyle={'light-content'} />
@@ -48,7 +52,12 @@ export const Home = () => {
       <FlatList
         data={mySkills}
         keyExtractor={item => item.id}
-        renderItem={({item}) => <SkillsBox title={item.title} />}
+        renderItem={({item}) => (
+          <SkillsBox
+            title={item.title}
+            onPress={() => handleRemoveSkill(item.id)}
+          />
+        )}
       />
     </View>
   );

@@ -1,13 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native';
 
-interface BoxProps {
+interface BoxProps extends TouchableOpacityProps {
   title: string;
 }
 
-export const SkillsBox = ({title}: BoxProps) => {
+export const SkillsBox = ({title, onPress}: BoxProps) => {
   return (
-    <TouchableOpacity style={style.skillBox}>
+    <TouchableOpacity style={style.skillBox} onPress={onPress}>
       <Text style={style.skillTitle}>{title}</Text>
     </TouchableOpacity>
   );
