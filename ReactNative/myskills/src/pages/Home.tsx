@@ -10,13 +10,29 @@ import {
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 
+interface SkillData {
+  id: string;
+  name: string;
+}
+
 export function Home() {
   const [greeting, setGreeting] = useState('');
   const [newSkill, setNewSkill] = useState('');
-  const [mySkills, setMySkills] = useState([]);
+  const [mySkills, setMySkills] = useState<SkillData[]>([]);
 
   function handleAddNewSkill() {
-    setMySkills(state => [...state, newSkill]);
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill,
+    };
+
+    setMySkills(state => [...state, data]);
+  }
+
+  function handleRemoveSkill(id: string) {
+    setMySkills(state => state.filter(
+      raw => raw.id !== id
+    ))
   }
 
   useEffect(() => {
@@ -52,7 +68,7 @@ export function Home() {
         onChangeText={setNewSkill}
       />
 
-      <Button onPress={handleAddNewSkill} />
+      <Button title="Add" onPress={handleAddNewSkill} />
 
       <Text style={[styles.title, { marginTop: 50, marginBottom: 20 }]}>
         My Skills
@@ -65,9 +81,12 @@ export function Home() {
       <FlatList
       showsVerticalScrollIndicator={false}
         data={mySkills}
-        keyExtractor={raw => raw}
+        keyExtractor={raw => raw.id}
         renderItem={({ item }) => (
-          <SkillCard skill={item} />
+          <SkillCard
+            skill={item.name}
+            onPress={() => handleRemoveSkill(item.id)}
+          />
         )}
       />
     </View>
