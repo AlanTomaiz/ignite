@@ -10,5 +10,3 @@
 </p>
 
 > Repositórios de projetos do treinamento Ignite da [Rocketseat](https://github.com/Rocketseat).
-
-## :rocket: Projetos
