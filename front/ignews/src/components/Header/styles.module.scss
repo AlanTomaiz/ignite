@@ -30,12 +30,12 @@
         color: var(--white);
       }
 
-      &.active {
+      &[data-active="true"] {
         color: var(--white);
         font-weight: bold;
       }
 
-      &.active::after {
+      &[data-active="true"]::after {
         content: '';
         position: absolute;
         bottom: 0;
