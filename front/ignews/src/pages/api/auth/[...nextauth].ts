@@ -12,6 +12,43 @@ export const authOptions = {
     }),
   ],
   callbacks: {
+    async session({ session }) {
+      let userActiveSubscription: object | null;
+
+      try {
+        const { email } = session.user;
+
+        userActiveSubscription = await fauna.query(
+          Query.Get(
+            Query.Intersection(
+              [
+                Query.Match(
+                  Query.Index('subscription_by_user_ref'),
+                  Query.Select(
+                    "ref",
+                    Query.Get(
+                      Query.Match(
+                        Query.Index('user_by_email'),
+                        Query.Casefold(email)
+                      )
+                    )
+                  )
+                ),
+                Query.Match(
+                  Query.Index('subscription_by_status'),
+                  "active"
+                )
+              ]
+            )
+          )
+        );
+      } catch { }
+
+      return {
+        ...session,
+        activeSubscription: userActiveSubscription || null,
+      }
+    },
     async signIn({ user }) {
       const { name, email } = user;
 
