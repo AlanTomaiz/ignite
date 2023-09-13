@@ -1,7 +1,20 @@
 import { randomUUID } from 'node:crypto'
+import fs from 'node:fs/promises'
+
+const databasePath = new URL('../db.json', import.meta.url)
 
 export class Database {
   #database = []
+
+  constructor() {
+    fs.readFile(databasePath, 'utf8')
+      .then((data) => this.#database = JSON.parse(data))
+      .catch(() => this.#persist())
+  }
+
+  #persist() {
+    fs.writeFile(databasePath, JSON.stringify(this.#database))
+  }
 
   select() {
     return this.#database
@@ -17,6 +30,8 @@ export class Database {
     }
 
     this.#database.push(row)
+
+    this.#persist()
   }
 
   update(id, data) {
@@ -30,6 +45,8 @@ export class Database {
         ...data,
         updated_at: new Date().toTimeString(),
       }
+
+      this.#persist()
     }
   }
 
@@ -44,6 +61,8 @@ export class Database {
         completed_at: new Date().toTimeString(),
         updated_at: new Date().toTimeString(),
       }
+
+      this.#persist()
     }
   }
 
@@ -52,6 +71,8 @@ export class Database {
 
     if (indexOf > -1) {
       this.#database.splice(indexOf, 1)
+
+      this.#persist()
     }
   }
 }
