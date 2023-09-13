@@ -46,4 +46,12 @@ export class Database {
       }
     }
   }
+
+  delete(id) {
+    const indexOf = this.#database.findIndex(row => row.id === id)
+
+    if (indexOf > -1) {
+      this.#database.splice(indexOf, 1)
+    }
+  }
 }
