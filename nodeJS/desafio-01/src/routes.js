@@ -43,6 +43,12 @@ export const routes = [
         return res.writeHead(404).end(error('title and description is required'))
       }
 
+      const task = database.select(id);
+
+      if (!task) {
+        return res.writeHead(404).end(error('Tasks not found or not exists'))
+      }
+
       database.update(id, { title, description })
 
       return res.writeHead(201).end()
@@ -54,7 +60,15 @@ export const routes = [
     handle: (req, res) => {
       const { id } = req.params
 
-      database.complete(id)
+      const task = database.select(id);
+
+      if (!task) {
+        return res.writeHead(404).end(error('Tasks not found or not exists'))
+      }
+
+      if (!task.completed_at) {
+        database.update(id, { completed_at: new Date() })
+      }
 
       return res.writeHead(201).end()
     }
@@ -64,6 +78,12 @@ export const routes = [
     path: BuildRoutePath('/tasks/:id'),
     handle: (req, res) => {
       const { id } = req.params
+
+      const task = database.select(id);
+
+      if (!task) {
+        return res.writeHead(404).end(error('Tasks not found or not exists'))
+      }
 
       database.delete(id)
 
