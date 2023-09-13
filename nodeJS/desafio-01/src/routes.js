@@ -3,18 +3,11 @@ import { BuildRoutePath } from "./utils/build-route-path.js";
 
 const database = new Database()
 
+const error = (message) => {
+  return JSON.stringify({ message })
+}
+
 export const routes = [
-  {
-    method: 'POST',
-    path: BuildRoutePath('/tasks'),
-    handle: (req, res) => {
-      const { title, description } = req.body
-
-      database.insert({ title, description });
-
-      return res.writeHead(201).end()
-    }
-  },
   {
     method: 'GET',
     path: BuildRoutePath('/tasks'),
@@ -25,11 +18,30 @@ export const routes = [
     }
   },
   {
+    method: 'POST',
+    path: BuildRoutePath('/tasks'),
+    handle: (req, res) => {
+      const { title, description } = req.body
+
+      if (!title || !description) {
+        return res.writeHead(404).end(error('title and description is required'))
+      }
+
+      database.insert({ title, description });
+
+      return res.writeHead(201).end()
+    }
+  },
+  {
     method: 'PUT',
     path: BuildRoutePath('/tasks/:id'),
     handle: (req, res) => {
       const { id } = req.params
       const { title, description } = req.body
+
+      if (!title || !description) {
+        return res.writeHead(404).end(error('title and description is required'))
+      }
 
       database.update(id, { title, description })
 
