@@ -23,7 +23,27 @@ export class Database {
     const indexOf = this.#database.findIndex(row => row.id === id)
 
     if (indexOf > -1) {
-      this.#database[indexOf] = { id, ...this.#database[indexOf], ...data }
+      const update = this.#database[indexOf]
+
+      this.#database[indexOf] = {
+        ...update,
+        ...data,
+        updated_at: new Date().toTimeString(),
+      }
+    }
+  }
+
+  complete(id) {
+    const indexOf = this.#database.findIndex(row => row.id === id)
+
+    if (indexOf > -1) {
+      const update = this.#database[indexOf]
+
+      this.#database[indexOf] = {
+        ...update,
+        completed_at: new Date().toTimeString(),
+        updated_at: new Date().toTimeString(),
+      }
     }
   }
 }
