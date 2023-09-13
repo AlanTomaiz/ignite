@@ -3,6 +3,10 @@ import { randomUUID } from 'node:crypto'
 export class Database {
   #database = []
 
+  select() {
+    return this.#database
+  }
+
   insert(data) {
     const row = {
       id: randomUUID(),

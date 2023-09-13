@@ -13,5 +13,14 @@ export const routes = [
 
       return res.writeHead(201).end()
     }
+  },
+  {
+    method: 'GET',
+    path: '/tasks',
+    handle: (req, res) => {
+      const tasks = database.select()
+
+      return res.end(JSON.stringify(tasks))
+    }
   }
 ]
