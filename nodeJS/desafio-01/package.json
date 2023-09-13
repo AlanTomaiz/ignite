@@ -5,9 +5,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "csv": "node streams/import-csv.js",
     "dev": "node --watch src/server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^6.3.3"
+  }
 }
