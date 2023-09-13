@@ -16,7 +16,11 @@ export class Database {
     fs.writeFile(databasePath, JSON.stringify(this.#database))
   }
 
-  select() {
+  select(id) {
+    if (id) {
+      return this.#database.find(row => row.id === id)
+    }
+
     return this.#database
   }
 
@@ -25,8 +29,8 @@ export class Database {
       id: randomUUID(),
       ...data,
       completed_at: null,
-      created_at: new Date().toTimeString(),
-      updated_at: new Date().toTimeString(),
+      created_at: new Date(),
+      updated_at: new Date(),
     }
 
     this.#database.push(row)
@@ -38,28 +42,12 @@ export class Database {
     const indexOf = this.#database.findIndex(row => row.id === id)
 
     if (indexOf > -1) {
-      const update = this.#database[indexOf]
+      const row = this.#database[indexOf]
 
       this.#database[indexOf] = {
-        ...update,
+        ...row,
         ...data,
-        updated_at: new Date().toTimeString(),
-      }
-
-      this.#persist()
-    }
-  }
-
-  complete(id) {
-    const indexOf = this.#database.findIndex(row => row.id === id)
-
-    if (indexOf > -1) {
-      const update = this.#database[indexOf]
-
-      this.#database[indexOf] = {
-        ...update,
-        completed_at: new Date().toTimeString(),
-        updated_at: new Date().toTimeString(),
+        updated_at: new Date(),
       }
 
       this.#persist()
