@@ -18,4 +18,12 @@ export class Database {
 
     this.#database.push(row)
   }
+
+  update(id, data) {
+    const indexOf = this.#database.findIndex(row => row.id === id)
+
+    if (indexOf > -1) {
+      this.#database[indexOf] = { id, ...this.#database[indexOf], ...data }
+    }
+  }
 }

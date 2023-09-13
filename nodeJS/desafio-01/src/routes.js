@@ -28,7 +28,12 @@ export const routes = [
     method: 'PUT',
     path: BuildRoutePath('/tasks/:id'),
     handle: (req, res) => {
-      return res.end('PUT ROUTE')
+      const { id } = req.params
+      const { title, description } = req.body
+
+      database.update(id, { title, description })
+
+      return res.writeHead(201).end()
     }
   }
 ]
