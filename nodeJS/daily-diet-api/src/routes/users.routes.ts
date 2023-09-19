@@ -20,12 +20,19 @@ export async function UsersRoutes(app: FastifyInstance) {
 
     await knex('users').insert(userData)
 
-    const { sessionId } = req.cookies
-    if (!sessionId) {
-      reply.cookie('sessionId', userData.id, {
-        path: '/',
-        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-      })
-    }
+    reply.cookie('sessionId', userData.id, {
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+    })
+
+    // const { sessionId } = req.cookies
+    // if (!sessionId) {
+    //   reply.cookie('sessionId', userData.id, {
+    //     path: '/',
+    //     maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+    //   })
+    // }
+
+    return reply.status(201).send()
   })
 }
