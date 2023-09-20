@@ -1,0 +1,68 @@
+[
+  {
+    "title": "X-TUDO",
+    "description": "Pao,Hamburguer Bacon Ovo,Salsicha,mussarela, Apresuntado,Alface Tomate,Milho e  Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": false
+  },
+  {
+    "title": "MISTO",
+    "description": "Pão,Apresuntado,e Mussarela",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  },
+  {
+    "title": "OMELETE",
+    "description": "Ovo,Apresuntado Queijo e Milho",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  },
+  {
+    "title": "X-BACON SIMPLES",
+    "description": "Pao,Hamburguer Bacon,mussarela, Apresuntado,Alface Tomate,Milho e  Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": false
+  },
+  {
+    "title": "X-BURGUER",
+    "description": "Pão,Hamburguer  Mussarela, e  Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": false
+  },
+  {
+    "title": "X-BURGUER ESPECIAL",
+    "description": "Pão,Hamburguer,Ovo e Mussarela",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": false
+  },
+  {
+    "title": "X-EGG",
+    "description": "Pão,Frango,Ovo Salsicha mussarela, Apresuntado    e Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  },
+  {
+    "title": "X-SALADA ESPECIAL",
+    "description": "Pao,Hamburguer Ovo, mussarela, Apresuntado,Alface Tomate,Milho e  Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  },
+  {
+    "title": "X-SALADA SIMPLES",
+    "description": "Pao,Hamburguer,mussarela, Apresuntado,Alface Tomate,Milho e  Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  },
+  {
+    "title": "X-VEGETARIANO",
+    "description": "Pão,Ovo,Queijo,Tomate  Alface,Cebola Milho e  Batata Palha",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  },
+  {
+    "title": "BAURU",
+    "description": "Pão,apresuntado, Mussarela e Tomate",
+    "date": "{% now 'iso-8601', '' %}",
+    "diet": true
+  }
+]
