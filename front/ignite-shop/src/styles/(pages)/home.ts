@@ -9,7 +9,7 @@ export const HomeContainer = styled('main', {
   minHeight: 656
 })
 
-export const ProductBox = styled('a', {
+export const ProductBox = styled('div', {
   position: 'relative',
   background: 'linear-gradient(180deg, #1ea483 00%, #7465d4 100%)',
   borderRadius: 8,
@@ -46,7 +46,8 @@ export const ProductBox = styled('a', {
   },
 
   'footer strong': {
-    fontSize: '$lg'
+    fontSize: '$lg',
+    color: '$gray100'
   },
 
   'footer span': {
