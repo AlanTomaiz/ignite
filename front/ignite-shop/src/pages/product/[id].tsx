@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from "react";
 import Stripe from "stripe";
 
+import Head from "next/head";
 import { api } from "../../lib/axios";
 import { stripe } from "../../lib/stripe";
 import { ProductContainer, ProductDetails, ProductImage } from "../../styles/(pages)/product";
@@ -41,19 +42,24 @@ export default function Product({ product }: PageProps) {
   }
 
   return (
-    <ProductContainer>
-      <ProductImage>
-        <Image src={product.imageUrl} width={520} height={480} alt={product.name} />
-      </ProductImage>
-      <ProductDetails>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
-        <p>{product.description}</p>
-        <button onClick={handlePayment} disabled={waiting}>
-          Comprar agora
-        </button>
-      </ProductDetails>
-    </ProductContainer>
+    <>
+      <Head>
+        <title>{product.name} | Ignite Shop</title>
+      </Head>
+      <ProductContainer>
+        <ProductImage>
+          <Image src={product.imageUrl} width={520} height={480} alt={product.name} />
+        </ProductImage>
+        <ProductDetails>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
+          <p>{product.description}</p>
+          <button onClick={handlePayment} disabled={waiting}>
+            Comprar agora
+          </button>
+        </ProductDetails>
+      </ProductContainer>
+    </>
   )
 }
 
