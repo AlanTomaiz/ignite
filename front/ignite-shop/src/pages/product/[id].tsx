@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from 'next/image';
+import { useState } from "react";
 import Stripe from "stripe";
 
 import { api } from "../../lib/axios";
@@ -18,8 +19,12 @@ interface PageProps {
 }
 
 export default function Product({ product }: PageProps) {
+  const [waiting, setWaiting] = useState(false)
+
   async function handlePayment() {
     try {
+      setWaiting(true)
+
       const response = await api.post('/api/stripe/checkout', {
         productId: product.id,
         priceId: product.defaultPriceId
@@ -28,6 +33,8 @@ export default function Product({ product }: PageProps) {
       const { checkoutUrl } = response.data
       window.location.href = checkoutUrl
     } catch (error) {
+      setWaiting(false)
+
       console.log('[HANDLE PAYMENT]', error)
       alert('Falha ao realizar checkout.')
     }
@@ -42,7 +49,9 @@ export default function Product({ product }: PageProps) {
         <h1>{product.name}</h1>
         <span>{product.price}</span>
         <p>{product.description}</p>
-        <button onClick={handlePayment}>Comprar agora</button>
+        <button onClick={handlePayment} disabled={waiting}>
+          Comprar agora
+        </button>
       </ProductDetails>
     </ProductContainer>
   )
