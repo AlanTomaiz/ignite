@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Image from 'next/image';
 import Stripe from "stripe";
 
+import { api } from "../../lib/axios";
 import { stripe } from "../../lib/stripe";
 import { ProductContainer, ProductDetails, ProductImage } from "../../styles/(pages)/product";
 
@@ -10,12 +11,28 @@ interface PageProps {
     id: string;
     name: string;
     imageUrl: string;
+    defaultPriceId: string;
     price: string;
     description: string;
   }
 }
 
 export default function Product({ product }: PageProps) {
+  async function handlePayment() {
+    try {
+      const response = await api.post('/api/stripe/checkout', {
+        productId: product.id,
+        priceId: product.defaultPriceId
+      })
+
+      const { checkoutUrl } = response.data
+      window.location.href = checkoutUrl
+    } catch (error) {
+      console.log('[HANDLE PAYMENT]', error)
+      alert('Falha ao realizar checkout.')
+    }
+  }
+
   return (
     <ProductContainer>
       <ProductImage>
@@ -25,7 +42,7 @@ export default function Product({ product }: PageProps) {
         <h1>{product.name}</h1>
         <span>{product.price}</span>
         <p>{product.description}</p>
-        <button>Comprar agora</button>
+        <button onClick={handlePayment}>Comprar agora</button>
       </ProductDetails>
     </ProductContainer>
   )
@@ -54,6 +71,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         name: product.name,
         imageUrl: product.images[0],
         description: product.description,
+        defaultPriceId: priceParsed.id,
         price: new Intl.NumberFormat('pt-BR', {
           style: 'currency',
           currency: 'BRL'
