@@ -8,4 +8,8 @@ declare module 'next-auth' {
     username: string
     avatar_url: string | undefined
   }
+
+  interface Session {
+    user: User
+  }
 }
