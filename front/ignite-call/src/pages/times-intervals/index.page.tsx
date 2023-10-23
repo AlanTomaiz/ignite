@@ -7,7 +7,6 @@ import {
   Text,
   TextInput,
 } from '@ignite-ui/react'
-import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { ArrowRight } from 'phosphor-react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
@@ -91,17 +90,14 @@ export default function TimeIntervals() {
 
   const weekDays = getWeekDays()
 
-  const session = useSession()
   const router = useRouter()
-
-  const hasAuthError = !!router.query.error
-  const isSignedIn = session.status === 'authenticated'
 
   async function handleSetTimeIntervals({
     intervals,
   }: TimeIntervalsFormSchema) {
     try {
       await api.post('/users/time-intervals', { intervals })
+      await router.push('/update-profile')
     } catch (error) {}
   }
 
