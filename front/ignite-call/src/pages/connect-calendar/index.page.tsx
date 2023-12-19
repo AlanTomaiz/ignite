@@ -1,5 +1,6 @@
 import { Button, Heading, MultiStep, Text } from '@ignite-ui/react'
 import { signIn, useSession } from 'next-auth/react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ArrowRight, Check } from 'phosphor-react'
 import { Container, Header } from '../register/styles'
@@ -22,6 +23,9 @@ export default function ConnectCalendar() {
 
   return (
     <Container>
+      <Head>
+        <title>Ignite Call</title>
+      </Head>
       <Header>
         <Heading as="strong">Conecte sua agenda!</Heading>
         <Text>

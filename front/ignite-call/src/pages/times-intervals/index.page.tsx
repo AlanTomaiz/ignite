@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
 } from '@ignite-ui/react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ArrowRight } from 'phosphor-react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
@@ -103,6 +104,9 @@ export default function TimeIntervals() {
 
   return (
     <Container>
+      <Head>
+        <title>Ignite Call</title>
+      </Head>
       <Header>
         <Heading as="strong">Quase lá</Heading>
         <Text>

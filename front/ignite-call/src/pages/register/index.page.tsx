@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react'
 import { AxiosError } from 'axios'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ArrowRight } from 'phosphor-react'
 import { useEffect } from 'react'
@@ -58,6 +59,9 @@ export default function Register() {
 
   return (
     <Container>
+      <Head>
+        <title>Ignite Call</title>
+      </Head>
       <Header>
         <Heading as="strong">Bem-vindo ao Ignite Call!</Heading>
         <Text>

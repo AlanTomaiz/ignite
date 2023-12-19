@@ -1,5 +1,6 @@
 import { Avatar, Heading, Text } from '@ignite-ui/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 import { prisma } from '../../../lib/prisma'
 import { ScheduleForm } from '../ScheduleForm'
 import { Container, UserHeader } from './styles'
@@ -15,6 +16,9 @@ interface ScheduleProps {
 export default function Schedule({ user }: ScheduleProps) {
   return (
     <Container>
+      <Head>
+        <title>Ignite Call</title>
+      </Head>
       <UserHeader>
         <Avatar src={user.avatarUrl} alt={user.name} />
         <Heading>{user.name}</Heading>

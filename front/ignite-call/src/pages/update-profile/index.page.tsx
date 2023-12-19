@@ -10,6 +10,7 @@ import {
 import { GetServerSideProps } from 'next'
 import { getServerSession } from 'next-auth'
 import { useSession } from 'next-auth/react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ArrowRight } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
@@ -46,6 +47,9 @@ export default function UpdateProfile() {
 
   return (
     <Container>
+      <Head>
+        <title>Ignite Call</title>
+      </Head>
       <Header>
         <Heading as="strong">Bem-vindo ao Ignite Call!</Heading>
         <Text>Por último, uma breve descrição e uma foto de perfil.</Text>
